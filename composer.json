@@ -1,0 +1,9 @@
+{
+    "require-dev": {
+        "doctrine/orm": "^2.5",
+        "doctrine/mongodb-odm": "^1.0"
+    },
+    "require": {
+        "ocramius/generated-hydrator": "^1.2"
+    }
+}
