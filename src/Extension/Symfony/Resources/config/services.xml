@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <!--
+    <parameters>
+
+    </parameters>
+    -->
+
+    <services>
+        <service id="davidbadura.doctrine_blending.manager" class="DavidBadura\DoctrineBlending\BlendingManager">
+            <argument type="service" id="davidbadura.doctrine_blending.handler_repository"/>
+        </service>
+
+        <service id="davidbadura.doctrine_blending.handler_repository" class="DavidBadura\DoctrineBlending\Handler\HandlerRepository">
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+        </service>
+    </services>
+
+</container>
