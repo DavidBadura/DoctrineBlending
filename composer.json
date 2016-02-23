@@ -1,9 +1,26 @@
 {
-    "require-dev": {
-        "doctrine/orm": "^2.5",
-        "doctrine/mongodb-odm": "^1.0"
-    },
+    "name": "davidbadura/doctrine-blending",
+    "description": "Glue-Code for Doctrine",
+    "keywords": ["doctrine", "orm", "odm", "database", "annotation"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [{
+        "name" : "David Badura",
+        "email" : "d.badura@gmx.de"
+    }],
     "require": {
-        "ocramius/generated-hydrator": "^1.2"
+        "jms/metadata": "^1.5",
+        "doctrine/annotations": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "DavidBadura\\OrangeDb\\": "src"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^3.0",
+        "doctrine/orm": "^2.5",
+        "doctrine/common": "^2.6",
+        "davidbadura/orangedb": "dev-master"
     }
 }

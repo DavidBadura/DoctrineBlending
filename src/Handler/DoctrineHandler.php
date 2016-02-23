@@ -3,8 +3,6 @@
 namespace DavidBadura\DoctrineBlending\Handler;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Doctrine\ODM\MongoDB\DocumentManager;
-use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @author David Badura <d.a.badura@gmail.com>
@@ -46,11 +44,11 @@ class DoctrineHandler implements HandlerInterface
     {
         $manager = $this->registry->getManagerForClass($options['class']);
 
-        if (!$manager instanceof EntityManagerInterface && !$manager instanceof DocumentManager) {
-            throw new \Exception(); // todo
+        if (method_exists($manager, 'getReference')) {
+            return $manager->getReference($options['class'], $value);
         }
 
-        return $manager->getReference($options['class'], $value);
+        return $manager->find($options['class'], $value);
     }
 
     /**
