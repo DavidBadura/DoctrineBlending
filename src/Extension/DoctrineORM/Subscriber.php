@@ -33,14 +33,14 @@ class Subscriber implements EventSubscriber
         return array(
             // load
             Events::postLoad,
-            Events::postPersist,
-            Events::postUpdate,
-            Events::postRemove,
+            //Events::postPersist,
+            //Events::postUpdate,
+            //Events::postRemove,
 
             // persist
             Events::prePersist,
             Events::preUpdate,
-            Events::preRemove
+            //Events::preRemove
         );
     }
 

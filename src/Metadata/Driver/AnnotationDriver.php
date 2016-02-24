@@ -8,6 +8,7 @@ use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Metadata\ClassMetadata;
 use Metadata\Driver\DriverInterface;
+use Metadata\MergeableClassMetadata;
 use ReflectionClass;
 
 /**
@@ -37,7 +38,7 @@ class AnnotationDriver implements DriverInterface
      */
     public function loadMetadataForClass(ReflectionClass $class)
     {
-        $classMetadata = new ClassMetadata($class->getName());
+        $classMetadata = new MergeableClassMetadata($class->getName());
 
         foreach ($class->getProperties() as $property) {
             foreach ($this->reader->getPropertyAnnotations($property) as $propertyAnnotation) {

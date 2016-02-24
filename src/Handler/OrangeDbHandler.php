@@ -3,6 +3,7 @@
 namespace DavidBadura\DoctrineBlending\Handler;
 
 use DavidBadura\OrangeDb\DocumentManager;
+use DavidBadura\OrangeDb\Metadata\PropertyMetadata;
 
 /**
  * @author David Badura <d.a.badura@gmail.com>
@@ -29,7 +30,16 @@ class OrangeDbHandler implements HandlerInterface
      */
     public function toDatabase($value, array $options = [])
     {
-        return $this->manager->getMetadataFor($options['class']);
+        if (!$value) {
+            return null;
+        }
+
+        $metadata = $this->manager->getMetadataFor($options['class']);
+
+        /** @var PropertyMetadata $property */
+        $property = $metadata->propertyMetadata[$metadata->identifier];
+
+        return $property->getValue($value);
     }
 
     /**
@@ -40,6 +50,10 @@ class OrangeDbHandler implements HandlerInterface
      */
     public function toPhp($value, array $options = [])
     {
+        if (!$value) {
+            return null;
+        }
+
         return $this->manager->find($options['class'], $value);
     }
 

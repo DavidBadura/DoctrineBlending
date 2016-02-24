@@ -15,8 +15,16 @@
             <argument type="service" id="davidbadura.doctrine_blending.handler_repository"/>
         </service>
 
-        <service id="davidbadura.doctrine_blending.handler_repository" class="DavidBadura\DoctrineBlending\Handler\HandlerRepository">
-            <argument type="service" id="doctrine.orm.entity_manager"/>
+        <service id="davidbadura.doctrine_blending.handler_repository" class="DavidBadura\DoctrineBlending\Handler\HandlerRepository"/>
+
+        <service id="davidbadura_doctrine_blending.orm.subscriber" class="DavidBadura\DoctrineBlending\Extension\DoctrineORM\Subscriber">
+            <argument type="service" id="davidbadura.doctrine_blending.manager"/>
+            <tag name="doctrine.event_subscriber"/>
+        </service>
+
+        <service id="davidbadura.doctrine_blending.handler.orangedb" class="DavidBadura\DoctrineBlending\Handler\OrangeDbHandler">
+            <argument type="service" id="orangedb"/>
+            <tag name="davidbadura_doctrine_blending.handler"/>
         </service>
     </services>
 

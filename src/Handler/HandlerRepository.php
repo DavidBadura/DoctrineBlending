@@ -10,7 +10,7 @@ class HandlerRepository
     /**
      * @var HandlerInterface[]
      */
-    private $handlers;
+    private $handlers = [];
 
     /**
      * @param string $name
@@ -18,6 +18,9 @@ class HandlerRepository
      */
     public function has($name)
     {
+        dump($name);
+        dump($this->handlers);
+
         return isset($this->handlers[$name]);
     }
 

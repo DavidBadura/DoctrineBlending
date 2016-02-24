@@ -58,12 +58,19 @@ class BlendingManager
     {
         $classMetadata = $this->metadataFactory->getMetadataForClass(get_class($object));
 
+
+
         /** @var PropertyMetadata $property */
         foreach ($classMetadata->propertyMetadata as $property) {
             $handler = $this->handlerRepository->get($property->handler);
 
             $value = $property->getValue($object);
+
+            dump($value);
+
             $value = $handler->toDatabase($value, $property->options);
+
+            dump($value);
 
             $property->setValue($object, $value);
         }
