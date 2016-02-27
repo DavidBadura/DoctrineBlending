@@ -32,6 +32,23 @@ class BlendingManager
     }
 
     /**
+     * @return HandlerRepository
+     */
+    public function getHandlerRepository()
+    {
+        return $this->handlerRepository;
+    }
+
+    /**
+     * @param string $class
+     * @return \Metadata\MergeableClassMetadata|null
+     */
+    public function getMetadataFor($class)
+    {
+        return $this->metadataFactory->getMetadataForClass($class);
+    }
+
+    /**
      * @param object $object
      * @throws \Exception
      */
@@ -57,7 +74,6 @@ class BlendingManager
     public function revertBlendings($object)
     {
         $classMetadata = $this->metadataFactory->getMetadataForClass(get_class($object));
-
 
 
         /** @var PropertyMetadata $property */
