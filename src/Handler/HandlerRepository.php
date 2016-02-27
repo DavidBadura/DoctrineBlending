@@ -18,9 +18,6 @@ class HandlerRepository
      */
     public function has($name)
     {
-        dump($name);
-        dump($this->handlers);
-
         return isset($this->handlers[$name]);
     }
 
